@@ -1,18 +1,41 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import React, { useState } from "react";
 import { icons } from "../constants";
 import { Video, ResizeMode } from "expo-av";
+import { useGlobalContext } from "../context/GlobalProvider";
+import { addUserBookMark } from "../lib/appwrite";
 
 const VideoCard = ({
   video: {
+    $id,
     title,
     thumbnail,
+    bookmark,
     video,
     creator: { username, avatar },
   },
 }) => {
+  const { user } = useGlobalContext();
   const [play, setPlay] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
+  const [isBookmarking, setIsBookmarking] = useState(false);
+
+  const isBookmarkedVideo = () => {
+    return bookmark.includes(user.$id);
+  };
+  const [isLiked, setIsLiked] = useState(isBookmarkedVideo);
+
+  const bookmarkVideo = async () => {
+    setIsBookmarking(true);
+    setIsLiked(!isLiked);
+    await addUserBookMark(!isLiked, user.$id, $id);
+    setIsBookmarking(false);
+  };
   return (
     <View className="flex-col items-center px-4 mb-14">
       <View className="flex-row gap-3 items-start">
@@ -39,22 +62,30 @@ const VideoCard = ({
             </Text>
           </View>
         </View>
-        <TouchableOpacity onPress={() => setIsLiked(!isLiked)}>
+        <TouchableOpacity onPress={bookmarkVideo}>
           <View className="justify-center items-center">
             <View className=" rounded-3xl bg-white opacity-10 w-10 h-10 "></View>
-            <Image
-              source={icons.bookmark}
-              className="w-5 h-5 absolute "
-              tintColor={isLiked ? "#FFA001" : "#CDCDE0"}
-              resizeMode="contain"
-            />
+
+            {isBookmarking ? (
+              <ActivityIndicator
+                className="w-5 h-5 absolute "
+                color="#FFA001"
+              />
+            ) : (
+              <Image
+                source={icons.bookmark}
+                className="w-5 h-5 absolute "
+                tintColor={isLiked ? "#FFA001" : "#CDCDE0"}
+                resizeMode="contain"
+              />
+            )}
           </View>
         </TouchableOpacity>
       </View>
       {play ? (
         <Video
           source={{ uri: video }}
-          className="w-full h-60 rounded-xl mt-"
+          className="w-full h-60 rounded-xl mt-3"
           resizeMode={ResizeMode.CONTAIN}
           useNativeControls
           shouldPlay

@@ -3,6 +3,7 @@ import {
   Text,
   FlatList,
   Image,
+  ActivityIndicator,
   RefreshControl,
   Alert,
 } from "react-native";
@@ -20,15 +21,22 @@ import { useGlobalContext } from "../../context/GlobalProvider";
 const Home = () => {
   const { user, setUser, setIsLogged } = useGlobalContext();
 
-  const { data: posts, refetch } = useAppwrite(getAllPosts);
-  const { data: latestPosts } = useAppwrite(getLatestPosts);
-
+  const {
+    data: posts,
+    refetch: refetchPosts,
+    isLoading: isPostsLoading,
+  } = useAppwrite(getAllPosts);
+  const {
+    data: latestPosts,
+    refetch: refetchLatestPosts,
+    isLoading: isLatestPostsLoading,
+  } = useAppwrite(getLatestPosts);
   //Refresh and reload on swipe
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = async () => {
     setRefreshing(true);
-    await refetch();
-
+    await refetchPosts();
+    await refetchLatestPosts();
     setRefreshing(false);
   };
   return (
@@ -59,7 +67,7 @@ const Home = () => {
 
             <SearchInput />
 
-            <View className="w-full flex-1 pt-5 pb-8">
+            <View className="w-full flex-1 pt-1 pb-5">
               <Text className="text-gray-100 text-lg font-pregular mb-3">
                 Latest Videos
               </Text>
@@ -71,6 +79,8 @@ const Home = () => {
           <EmptyState
             title="No Videos Found"
             subtitle="Be the first one to upload a video and join the aora community "
+            isPostsLoading={isPostsLoading}
+            isLatestPostsLoading={isLatestPostsLoading}
           />
         )}
         refreshControl={

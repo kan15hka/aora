@@ -1,14 +1,30 @@
-import { View, Text, FlatList } from "react-native";
-import React from "react";
+import { View, Text, FlatList, RefreshControl } from "react-native";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import useAppwrite from "../../lib/useAppwrite";
-import { getAllPosts } from "../../lib/appwrite";
+import { getAllPosts, getBookmarkedPosts } from "../../lib/appwrite";
 import VideoCard from "../../components/VideoCard";
 import SearchInput from "../../components/SearchInput";
 import EmptyState from "../../components/EmptyState";
+import { useGlobalContext } from "../../context/GlobalProvider";
 
 const BookMark = () => {
-  const { data: posts } = useAppwrite(getAllPosts);
+  const { user, setUser, setIsLogged } = useGlobalContext();
+
+  // const { data: posts } = useAppwrite(getAllPosts);
+  const {
+    data: posts,
+    refetch: refetch,
+    isLoading: isPostsLoading,
+  } = useAppwrite(() => getBookmarkedPosts(user.$id));
+  //Refresh and reload on swipe
+  const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await refetch();
+
+    setRefreshing(false);
+  };
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
@@ -28,8 +44,13 @@ const BookMark = () => {
           <EmptyState
             title="No Videos Found"
             subtitle="Be the first one to upload a video and join the aora community "
+            isPostsLoading={isPostsLoading}
+            isLatestPostsLoading={true}
           />
         )}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
       />
     </SafeAreaView>
   );

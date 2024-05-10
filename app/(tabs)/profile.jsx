@@ -1,5 +1,12 @@
-import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
-import React, { useEffect } from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Image,
+  RefreshControl,
+} from "react-native";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import EmptyState from "../../components/EmptyState";
 import { getUserPosts, searchPosts, signOut } from "../../lib/appwrite";
@@ -11,13 +18,25 @@ import InfoBox from "../../components/InfoBox";
 import { router } from "expo-router";
 const Profile = () => {
   const { user, setUser, setIsLogged } = useGlobalContext();
-  const { data: posts } = useAppwrite(() => getUserPosts(user.$id));
+  const {
+    data: posts,
+    refetch: refetchPosts,
+    isLoading: isPostsLoading,
+  } = useAppwrite(() => getUserPosts(user.$id));
 
   const logout = async () => {
     await signOut();
     setUser(null);
     setIsLogged(false);
     router.replace("/sign-in");
+  };
+  //Refresh and reload on swipe
+  const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await refetchPosts();
+    await refetchLatestPosts();
+    setRefreshing(false);
   };
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -71,8 +90,13 @@ const Profile = () => {
           <EmptyState
             title="No Videos Found"
             subtitle="No videos found for this search query"
+            isPostsLoading={isPostsLoading}
+            isLatestPostsLoading={true}
           />
         )}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
       />
     </SafeAreaView>
   );
