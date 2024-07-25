@@ -1,10 +1,12 @@
 ![Aora - React Native Crash Course_page-0001](https://github.com/user-attachments/assets/548ba6b3-19b5-49a7-a9f6-6b5e0e7c0684)
 
 <div align="center">
-  <img src="[https://github.com/user-attachments/assets/aaa1fc1e-862c-428e-982c-c3281da8f83f](https://camo.githubusercontent.com/74ee8963aa22c2195bc5b5aedb40f418e89b8bdaecd0164d15caf4959da7a824/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d52656163745f4e61746976652d626c61636b3f7374796c653d666f722d7468652d6261646765266c6f676f436f6c6f723d7768697465266c6f676f3d726561637426636f6c6f723d363144414642)" width="100px" />
-  <img src="[https://github.com/user-attachments/assets/4c7b3cde-ef39-442b-b276-de1116e1dc2b](https://camo.githubusercontent.com/51033f12d72500b908427821bfb491fc2125a89f37ed33ff5cd554ef02c4a275/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e617469766557696e642d626c61636b3f7374796c653d666f722d7468652d6261646765266c6f676f436f6c6f723d7768697465266c6f676f3d7461696c77696e6463737326636f6c6f723d303642364434)" width="100px" />
-  <img src="[https://github.com/user-attachments/assets/86870312-8498-4a6c-9b97-cc5625e30f2b](https://camo.githubusercontent.com/7c8871326e24b260033c205d157830d0e2d6d339724b19e37b4583af48ed5c81/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d41707077726974652d626c61636b3f7374796c653d666f722d7468652d6261646765266c6f676f436f6c6f723d7768697465266c6f676f3d617070777269746526636f6c6f723d464433363645)" width="100px" />
-</div># **Aora**
+  <img src="https://github.com/user-attachments/assets/0c192b6c-1b8e-48f3-8a0e-8eae239c5048" width="100px" />
+  <img src="https://github.com/user-attachments/assets/dd0f3f06-7545-49d6-9555-d47ed8c8cfa2" width="100px" />
+  <img src="https://github.com/user-attachments/assets/2c9e7c84-cad6-4cc7-a479-a5695cbaee73" width="100px" />
+</div>
+
+# **Aora**
 
 **JS Mastery App** 
 Link: https://www.youtube.com/watch?v=ZBCUegTZF7M
