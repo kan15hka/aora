@@ -37,10 +37,15 @@ Make sure you have the following installed on your machine:
 
 Download the Expo Go app onto your device, then use it to scan the QR code from Terminal and run.
 
-![Aora - React Native Crash Coursek_page-0002](https://github.com/user-attachments/assets/aaa1fc1e-862c-428e-982c-c3281da8f83f)
-![Aora - React Native Crash Coursek_page-0003](https://github.com/user-attachments/assets/4c7b3cde-ef39-442b-b276-de1116e1dc2b)
-![Aora - React Native Crash Coursek_page-0004](https://github.com/user-attachments/assets/86870312-8498-4a6c-9b97-cc5625e30f2b)
-![Aora - React Native Crash Coursek_page-0005](https://github.com/user-attachments/assets/3e110b6a-348b-41e1-afd2-e6c2ae0684ce)
-![Aora - React Native Crash Coursek_page-0006](https://github.com/user-attachments/assets/145d3100-069f-4930-a9cf-d534ebe344dc)
-![Aora - React Native Crash Coursek_page-0008](https://github.com/user-attachments/assets/fbd061c1-486e-4703-b215-da55b5ffe86c)
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/aaa1fc1e-862c-428e-982c-c3281da8f83f" width="200px" />
+  <img src="https://github.com/user-attachments/assets/4c7b3cde-ef39-442b-b276-de1116e1dc2b" width="200px" />
+  <img src="https://github.com/user-attachments/assets/86870312-8498-4a6c-9b97-cc5625e30f2b" width="200px" />
+</div>
+<br/>
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/3e110b6a-348b-41e1-afd2-e6c2ae0684ce" width="200px" />
+  <img src="https://github.com/user-attachments/assets/145d3100-069f-4930-a9cf-d534ebe344dc" width="200px" />
+  <img src="https://github.com/user-attachments/assets/fbd061c1-486e-4703-b215-da55b5ffe86c" width="200px" />
+</div>
 
